@@ -28,7 +28,7 @@ int _execve(char *str, char *name, char **env)
 			(_strcmp(str, "ls -l /tmp") == 0))
 		execve(argv[0], argv, env);
 	else if ((_strcmp(str, "exit") == 0) || (_strcmp(str, "exit") == 0))
-		exit(99);
+		exits();
 	else if ((strcmp(str, "ls /var") == 0) || (strcmp(str, "/bin/ls /var") == 0)
 			|| (_strcmp(str, "ls /var") == 0) ||
 			(_strcmp(str, "/bin/ls /var") == 0) ||
@@ -73,4 +73,11 @@ int _strcmp(char *s1, char *s2)
 		i++;
 	}
 	return (0);
+}
+/**
+ * exits - exit the shell.
+ */
+void exits(void)
+{
+	exit(99);
 }

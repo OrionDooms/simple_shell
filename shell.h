@@ -28,5 +28,6 @@ void Remove_space(char *str, char *cp, char **env);
 char *my_strtok(char *str, const char *delim);
 
 ssize_t my_gline(char **line, size_t *n, FILE *stream);
+void exits(void);
 void execmd(char **av);
 #endif

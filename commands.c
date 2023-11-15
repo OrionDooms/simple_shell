@@ -29,7 +29,7 @@ void commands(char *str, char *cp, char **env)
 		else if (strcmp(args[1], "$PATH") == 0)
 			printf("%s\n", e);
 		else if (strcmp(args[1], "exit") == 0)
-			exit(0);
+			exits();
 		else if (find_quotation(copy) == 0)
 			Remove_quote(copy, cp, env);
 		else
