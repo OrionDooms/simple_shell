@@ -12,21 +12,21 @@ int _execve(char *str, char *name, char **env)
 	char *argv[] = {"/bin/ls", "-l", "/tmp", NULL};
 	char *list2[] = {"/bin/ls", "-l", NULL}, *b_echo = ("/bin/echo ");
 	char *var[] = {"/bin/ls", "../../var", NULL};
-	char *list3[] = {"ls", "-a", NULL};
+	char *list3[] = {"ls", "-a", NULL}, *l4[] = {"/bin/ls", "/tmp", NULL};
 	unsigned int i = 0;
 
-	if ((strcmp(str, "/bin/ls") == 0) || (strcmp(str, "ls") == 0) ||
-			(_strcmp(str, "/bin/ls") == 0) || (_strcmp(str, "ls") == 0))
+	if ((strcmp(str, "/bin/ls") == 0) || (strcmp(str, "ls") == 0))
 		execve(list, a, env);
-	else if ((strcmp(str, "/bin/ls -l") == 0) || (strcmp(str, "ls -l") == 0) ||
-			(_strcmp(str, "/bin/ls -l") == 0) ||
-			(_strcmp(str, "ls -l") == 0))
+	else if ((strcmp(str, "/bin/ls -l") == 0) || (strcmp(str, "ls -l") == 0))
 		execve(list2[0], list2, env);
 	else if ((strcmp(str, "/bin/ls -l /tmp") == 0) ||
 			(strcmp(str, "ls -l /tmp") == 0) ||
 			(_strcmp(str, "/bin/ls -l /tmp") == 0) ||
 			(_strcmp(str, "ls -l /tmp") == 0))
 		execve(argv[0], argv, env);
+	else if ((strcmp(str, "/bin/ls /tmp") == 0) ||
+			(strcmp(str, "ls /tmp") == 0))
+		execve(l4[0], l4, env);
 	else if ((_strcmp(str, "exit") == 0) || (_strcmp(str, "exit") == 0))
 		exits(99);
 	else if ((strcmp(str, "ls /var") == 0) || (strcmp(str, "/bin/ls /var") == 0)
