@@ -13,8 +13,8 @@ int _execve(char *str, char *name, char **env)
 	char *l2[] = {"/bin/ls", "-l", NULL}, *b_echo = ("/bin/echo ");
 	char *var[] = {"/bin/ls", "../../var", NULL};
 	char *list3[] = {"ls", "-a", NULL}, *l4[] = {"/bin/ls", "/tmp", NULL};
-	unsigned int i = 0;
 
+	env = environ;
 	if ((strcmp(str, "/bin/ls") == 0) || (strcmp(str, "ls") == 0))
 		execve(l, a, env);
 	else if ((strcmp(str, "/bin/ls -l") == 0) || (strcmp(str, "ls -l") == 0))
@@ -38,10 +38,10 @@ int _execve(char *str, char *name, char **env)
 	else if ((strcmp(str, "ls -a") == 0) || (_strcmp(str, "ls -a") == 0))
 		execve("/bin/ls", list3, env);
 	else if ((strcmp(str, "env") == 0) || (_strcmp(str, "env") == 0))
-		while (env[i] != NULL)
+		while (*env != NULL)
 		{
-			printf("%s\n", env[i]);
-			i++;
+			printf("%s\n", *env);
+			env++;
 		}
 	else if (strstr(str, b_echo))
 		del_string(str, b_echo);

@@ -13,6 +13,7 @@
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
 #define MAX_ARGS 64
+extern char **environ;
 int shell_loop(char *cp, char **env);
 int _execve(char *str, char *name, char **env);
 int _strcmp(char *s1, char *s2);
