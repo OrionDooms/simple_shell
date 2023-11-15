@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * my_getline - Reads an entire line from stream.
+ * my_gline - Reads an entire line from stream.
  * @line: Storing the address contants the text into **line.
  * @n: is a pointer that keeps the array’s size.
  * @f: is the stream from which the file will be read.
