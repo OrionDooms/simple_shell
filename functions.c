@@ -37,7 +37,7 @@ int _execve(char *str, char *name, char **env)
 		execve(var[0], var, env);
 	else if ((strcmp(str, "ls -a") == 0) || (_strcmp(str, "ls -a") == 0))
 		execve("/bin/ls", list3, env);
-	else if ((_strcmp(str, "env") == 0) || (_strcmp(str, "env") == 0))
+	else if ((strcmp(str, "env") == 0) || (_strcmp(str, "env") == 0))
 		while (env[i] != NULL)
 		{
 			printf("%s\n", env[i]);
