@@ -8,22 +8,22 @@
  */
 int _execve(char *str, char *name, char **env)
 {
-	char list[] = {"/bin/ls"}, *a[] = {"ls", NULL, NULL};
-	char *argv[] = {"/bin/ls", "-l", "/tmp", NULL};
-	char *list2[] = {"/bin/ls", "-l", NULL}, *b_echo = ("/bin/echo ");
+	char l[] = {"/bin/ls"}, *a[] = {"ls", NULL, NULL};
+	char *l1[] = {"/bin/ls", "-l", "/tmp", NULL};
+	char *l2[] = {"/bin/ls", "-l", NULL}, *b_echo = ("/bin/echo ");
 	char *var[] = {"/bin/ls", "../../var", NULL};
 	char *list3[] = {"ls", "-a", NULL}, *l4[] = {"/bin/ls", "/tmp", NULL};
 	unsigned int i = 0;
 
 	if ((strcmp(str, "/bin/ls") == 0) || (strcmp(str, "ls") == 0))
-		execve(list, a, env);
+		execve(l, a, env);
 	else if ((strcmp(str, "/bin/ls -l") == 0) || (strcmp(str, "ls -l") == 0))
-		execve(list2[0], list2, env);
+		execve(l2[0], l2, env);
+	else if ((strcmp(str, "/bin/l") == 0) || (strcmp(str, "l") == 0))
+		execve(l, a, env);
 	else if ((strcmp(str, "/bin/ls -l /tmp") == 0) ||
-			(strcmp(str, "ls -l /tmp") == 0) ||
-			(_strcmp(str, "/bin/ls -l /tmp") == 0) ||
-			(_strcmp(str, "ls -l /tmp") == 0))
-		execve(argv[0], argv, env);
+			(strcmp(str, "ls -l /tmp") == 0))
+		execve(l1[0], l1, env);
 	else if ((strcmp(str, "/bin/ls /tmp") == 0) ||
 			(strcmp(str, "ls /tmp") == 0))
 		execve(l4[0], l4, env);
