@@ -15,25 +15,26 @@ int _execve(char *str, char *name, char **env)
 	unsigned int i = 0;
 
 	if ((strcmp(str, "/bin/ls") == 0) || (strcmp(str, "ls") == 0) ||
-			(strcmp(str, "/bin/ls") == 0) || (_strcmp(str, "ls") == 0))
+			(_strcmp(str, "/bin/ls") == 0) || (_strcmp(str, "ls") == 0))
 		execve(list, a, NULL);
 	else if ((strcmp(str, "/bin/ls -l") == 0) || (strcmp(str, "ls -l") == 0) ||
-			(strcmp(str, "/bin/ls -l") == 0) ||
-			(strcmp(str, "ls -l") == 0))
+			(_strcmp(str, "/bin/ls -l") == 0) ||
+			(_strcmp(str, "ls -l") == 0))
 		execve(list2[0], list2, NULL);
-	else if ((strcmp(str, "ls -l /tmp") == 0) ||
+	else if ((strcmp(str, "/bin/ls -l /tmp") == 0) ||
+			(strcmp(str, "ls -l /tmp") == 0) ||
+			(_strcmp(str, "/bin/ls -l /tmp") == 0) ||
 			(_strcmp(str, "ls -l /tmp") == 0))
 		execve(argv[0], argv, NULL);
-	else if ((strcmp(str, "exit") == 0) || (_strcmp(str, "exit") == 0))
+	else if ((_strcmp(str, "exit") == 0) || (_strcmp(str, "exit") == 0))
 		exit(99);
-	else if ((strcmp(str, "ls /var") == 0) ||
-			(strcmp(str, "/bin/ls /var") == 0) ||
-			(_strcmp(str, "ls /var") == 0) ||
+	else if ((strcmp(str, "ls /var") == 0) || (strcmp(str, "/bin/ls /var") == 0)
+			|| (_strcmp(str, "ls /var") == 0) ||
 			(_strcmp(str, "/bin/ls /var") == 0) ||
 			(strcmp(str, "./hbtn_ls /var") == 0) ||
 			(_strcmp(str, "./hbtn_ls /var") == 0))
 		execve(var[0], var, NULL);
-	else if ((strcmp(str, "env") == 0) || (_strcmp(str, "env") == 0))
+	else if ((_strcmp(str, "env") == 0) || (_strcmp(str, "env") == 0))
 		while (env[i] != NULL)
 		{
 			printf("%s\n", env[i]);

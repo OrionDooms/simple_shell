@@ -54,7 +54,8 @@ int shell_loop(char *cp, char **env)
 {
 	size_t size = 0;
 	char *prompt = "$ ", *buff = NULL;
-	pid_t pid;
+	int status;
+	pid_t my_pid;
 
 	while (1)
 	{
@@ -70,16 +71,19 @@ int shell_loop(char *cp, char **env)
 			free(buff);
 			exit(0);
 		}
-		pid = fork();
-		if (pid == 0)
+		my_pid = fork();
+		if (my_pid == -1)
+		{
+			perror("Fork failed");
+			return (1);
+		}
+		if (my_pid == 0)
 		{
 			commands(buff, cp, env);
-			exit(2);
+			exit(127);
 		}
-		else if (pid > 0)
-			wait(NULL);
 		else
-			perror("fork failed");
+			waitpid(my_pid, &status, 0);
 	}
 	free(buff);
 	return (0);

@@ -28,6 +28,6 @@ void Remove_space(char *str, char *cp, char **env);
 char *my_strtok(char *str, const char *delim);
 
 ssize_t my_getline(char **line, size_t *n, FILE *stream);
+void Remove_tabs(char *str, char *cp, char **env);
 void execmd(char **av);
-
 #endif
