@@ -69,7 +69,7 @@ int shell_loop(char *cp, char **env)
 		if (strcmp(buff, "exit") == 0)
 		{
 			free(buff);
-			exit(0);
+			exits(0);
 		}
 		my_pid = fork();
 		if (my_pid == -1)
