@@ -6,7 +6,7 @@
  * @f: is the stream from which the file will be read.
  * Return: The number of characters read.
  */
-ssize_t my_getline(char **line, size_t *n, FILE *f)
+ssize_t my_gline(char **line, size_t *n, FILE *f)
 {
 	int c;
 	size_t i = 0, new_size, temp = 0;

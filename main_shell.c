@@ -17,7 +17,7 @@ int main(int argc, char **argv, char **env)
 			shell_loop(cp, env);
 		else
 		{
-			my_getline(&str, &agc, stdin);
+			my_gline(&str, &agc, stdin);
 			commands(str, cp, env);
 		}
 	}
@@ -60,7 +60,7 @@ int shell_loop(char *cp, char **env)
 	while (1)
 	{
 		write(STDOUT_FILENO, prompt, 2);
-		if (my_getline(&buff, &size, stdin) == -1)
+		if (my_gline(&buff, &size, stdin) == -1)
 		{
 			free(buff);
 			return (-1);

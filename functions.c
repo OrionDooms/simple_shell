@@ -12,6 +12,7 @@ int _execve(char *str, char *name, char **env)
 	char *argv[] = {"/bin/ls", "-l", "/tmp", NULL};
 	char *list2[] = {"/bin/ls", "-l", NULL}, *b_echo = ("/bin/echo ");
 	char *var[] = {"/bin/ls", "../../var", NULL};
+	char *list3[] = {"ls", "-a", NULL};
 	unsigned int i = 0;
 
 	if ((strcmp(str, "/bin/ls") == 0) || (strcmp(str, "ls") == 0) ||
@@ -34,6 +35,8 @@ int _execve(char *str, char *name, char **env)
 			(strcmp(str, "./hbtn_ls /var") == 0) ||
 			(_strcmp(str, "./hbtn_ls /var") == 0))
 		execve(var[0], var, NULL);
+	else if ((strcmp(str, "ls -a") == 0) || (_strcmp(str, "ls -a") == 0))
+		execve("/bin/ls", list3, NULL);
 	else if ((_strcmp(str, "env") == 0) || (_strcmp(str, "env") == 0))
 		while (env[i] != NULL)
 		{
