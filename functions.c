@@ -14,7 +14,6 @@ int _execve(char *str, char *name, char **env)
 	char *var[] = {"/bin/ls", "../../var", NULL};
 	char *list3[] = {"ls", "-a", NULL}, *l4[] = {"/bin/ls", "/tmp", NULL};
 
-	env = environ;
 	if ((strcmp(str, "/bin/ls") == 0) || (strcmp(str, "ls") == 0))
 		execve(l, a, env);
 	else if ((strcmp(str, "/bin/ls -l") == 0) || (strcmp(str, "ls -l") == 0))
@@ -37,12 +36,8 @@ int _execve(char *str, char *name, char **env)
 		execve(var[0], var, env);
 	else if ((strcmp(str, "ls -a") == 0) || (_strcmp(str, "ls -a") == 0))
 		execve("/bin/ls", list3, env);
-	else if ((strcmp(str, "env") == 0) || (_strcmp(str, "env") == 0))
-		while (*env != NULL)
-		{
-			printf("%s\n", *env);
-			env++;
-		}
+	else if ((strcmp(str, "env") == 0) || (strcmp(str, "printenv") == 0))
+		print_env(env);
 	else if (strstr(str, b_echo))
 		del_string(str, b_echo);
 	else

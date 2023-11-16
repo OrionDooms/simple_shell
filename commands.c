@@ -22,7 +22,7 @@ void commands(char *str, char *cp, char **env)
 		token = my_strtok(NULL, " ");
 	}
 	args[i] = NULL;
-	if ((strcmp(args[0], "echo") == 0) || (strcmp(args[0], "echo") == 0))
+	if ((strcmp(args[0], "echo") == 0) || (strcmp(args[0], "/bin/echo") == 0))
 	{
 		if (strcmp(args[1], "$$") == 0)
 			printf("%d\n", (int)getpid());
