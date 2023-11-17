@@ -32,7 +32,7 @@ int _execve(char *str, char *name, char **env)
 			|| (_strcmp(str, "ls /var") == 0) ||
 			(_strcmp(str, "/bin/ls /var") == 0) ||
 			(strcmp(str, "./hbtn_ls /var") == 0) ||
-			(_strcmp(str, "./hbtn_ls /var") == 0))
+			(strstr(str, "./hbtn_ls /var") == 0))
 		execve(var[0], var, env);
 	else if ((strcmp(str, "ls -a") == 0) || (_strcmp(str, "ls -a") == 0))
 		execve("/bin/ls", list3, env);
