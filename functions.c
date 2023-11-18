@@ -9,7 +9,6 @@
 int _execve(char *str, char *name, char **env)
 {
 	char l[] = {"/bin/ls"}, *a[] = {"ls", NULL, NULL};
-	char *l3[] = {"ls", "-la", NULL};
 	char *l1[] = {"/bin/ls", "-l", "/tmp", NULL};
 	char *l2[] = {"/bin/ls", "-l", NULL}, *b_echo = ("/bin/echo ");
 	char *var[] = {"/bin/ls", "../../var", NULL};
@@ -24,18 +23,13 @@ int _execve(char *str, char *name, char **env)
 	else if ((strcmp(str, "/bin/ls -l /tmp") == 0) ||
 			(strcmp(str, "ls -l /tmp") == 0))
 		execve(l1[0], l1, env);
-	else if ((strstr(str, "/bin/ls -la") == 0) || (strstr(l, "ls -la") == 0))
-		execve("/usr/bin/ls", l3, env);
 	else if ((strcmp(str, "/bin/ls /tmp") == 0) ||
 			(strcmp(str, "ls /tmp") == 0))
 		execve(l4[0], l4, env);
-	else if ((_strcmp(str, "exit") == 0) || (_strcmp(str, "exit") == 0))
+	else if (strcmp(str, "exit") == 0)
 		exits(99);
 	else if ((strcmp(str, "ls /var") == 0) || (strcmp(str, "/bin/ls /var") == 0)
-			|| (_strcmp(str, "ls /var") == 0) ||
-			(strstr(str, "/bin/ls /var") == 0) ||
-			(strcmp(str, "/hbtn_ls /var") == 0) ||
-			(strstr(str, "/hbtn_ls /var") == 0))
+			|| (strcmp(str, "/hbtn_ls /var") == 0))
 		execve(var[0], var, env);
 	else if ((strcmp(str, "ls -a") == 0) || (_strcmp(str, "ls -a") == 0))
 		execve("/bin/ls", list3, env);
